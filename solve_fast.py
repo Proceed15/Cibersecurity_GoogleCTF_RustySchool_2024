@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 solve_fast.py - Decifrador Multiprocessado para Rusty School (Google CTF 2024)
-Executa a resolução dos sistemas polinomiais no SageMath em paralelo entre múltiplos núcleos de CPU.
+Executa a resolução dos sistemas polinomiais no SageMath em paralelo usando o módulo solve.py oficial.
 """
 
 import sys
@@ -9,26 +9,17 @@ import os
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-def process_single_block_sage(block_data_hex, block_index):
-    """
-    Subprocesso que invoca o SageMath para resolver individualmente cada bloco de 60 bytes.
-    """
-    cmd = f'sage -c "from solve import decrypt_block; print(decrypt_block(bytes.fromhex(\'{block_data_hex}\')).hex())"'
-    pipe = os.popen(cmd)
-    res_hex = pipe.read().strip()
-    pipe.close()
-    
-    return block_index, bytes.fromhex(res_hex) if res_hex else b""
+def process_single_block(block_hex, idx):
+    from solve import decrypt_block
+    block_bytes = bytes.fromhex(block_hex)
+    res = decrypt_block(block_bytes)
+    return idx, res
 
 def main():
-    if len(sys.argv) < 2:
-        enc_file = "flag.txt.encrypted"
-    else:
-        enc_file = sys.argv[1]
+    enc_file = sys.argv[1] if len(sys.argv) > 1 else "flag.txt.encrypted"
 
     if not os.path.exists(enc_file):
         print(f"[-] Arquivo cifrado '{enc_file}' não foi encontrado.")
-        print("    Exemplo de uso: python3 solve_fast.py flag.txt.encrypted [num_workers]")
         sys.exit(1)
 
     workers = int(sys.argv[2]) if len(sys.argv) > 2 else os.cpu_count() or 4
@@ -45,7 +36,7 @@ def main():
 
     with ProcessPoolExecutor(max_workers=workers) as executor:
         futures = {
-            executor.submit(process_single_block_sage, block.hex(), idx): idx
+            executor.submit(process_single_block, block.hex(), idx): idx
             for idx, block in enumerate(blocks)
         }
 
@@ -69,3 +60,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
