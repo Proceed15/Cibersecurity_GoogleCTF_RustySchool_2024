@@ -5,7 +5,7 @@
 
 ---
 
-## 📌 Visão Geral do Desafio
+## Visão Geral do Desafio
 
 O desafio consiste na análise de um executável ELF x86-64 compilado em **Rust** (`rustyschool`) que implementa uma cifra de bloco proprietária baseada em uma **Rede Feistel de 4 ramos** com 12 rodadas e evolução de chaves sobre o corpo finito $\text{GF}(2^{16})$.
 
@@ -16,7 +16,7 @@ Para recuperar a mensagem original em texto plano a partir do arquivo cifrado (`
 
 ---
 
-## 📂 Estrutura do Repositório
+## Estrutura do Repositório
 
 ```text
 .
@@ -36,7 +36,7 @@ Para recuperar a mensagem original em texto plano a partir do arquivo cifrado (`
 
 ---
 
-## 🛠️ Requisitos e Pré-requisitos
+## Requisitos e Pré-requisitos
 
 * **Sistema Operacional**: Linux (Ubuntu 22.04 LTS / WSL2)
 * **Python**: 3.10 ou superior
@@ -51,7 +51,7 @@ conda activate sage
 
 ---
 
-## 🚀 Como Executar o Solver (*Quick Start*)
+## Como Executar o Solver (*Quick Start*)
 
 1. **Clone o repositório e navegue até a pasta**:
    ```bash
@@ -73,7 +73,7 @@ conda activate sage
 
 ---
 
-## 🔬 Detalhes da Solução Algébrica
+## Detalhes da Solução Algébrica
 
 ### 1. Inversão da Derivação de Chaves (`derive`)
 A função de chave deriva o estado inicial em $\text{GF}(2^{16})$ resolvendo o Ideal polinomial de 6 equações quadráticas:
@@ -87,10 +87,9 @@ Para cada uma das 12 rodadas Feistel (de trás para frente):
 
 ---
 
-## 🏆 Flag Decifrada
+## Flag Decifrada
 
 A flag é um banner visual completo em **Arte ASCII** com a marca oficial do **Google CTF 2024**:
-
 ```text
  .d8888b. 88888888888 8888888888 .d888 8888888 
 d88P  Y88b    888     888       d88P"    888   
@@ -101,3 +100,4 @@ d88P  Y88b    888     888       d88P"    888
 Y88b  d88P    888     888  d88P          888   
  "Y8888P8"    888     888 d88P       888888888 
 ```
+
