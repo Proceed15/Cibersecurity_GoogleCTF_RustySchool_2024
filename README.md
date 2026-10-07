@@ -16,7 +16,7 @@ Para recuperar a mensagem original em texto plano a partir do arquivo cifrado (`
 
 ---
 
-## Estrutura do Repositório
+## Estrutura do Repositório (Arquivos Principais)
 
 ```text
 .
