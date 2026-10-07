@@ -1,4 +1,4 @@
-# Google CTF 2024 — Rusty School (Reversing / Crypto)
+# Google CTF 2024 + Rusty School (Reversing / Crypto)
 
 > **WriteUp & Solução Oficial** do desafio **Rusty School** do Google CTF 2024.
 > **Pontuação:** 406 pts | **Solves:** 6 | **Autores:** Google CTF / perfect blue
