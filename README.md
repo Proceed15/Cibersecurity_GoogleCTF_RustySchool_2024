@@ -33,8 +33,8 @@ Para recuperar a mensagem original em texto plano a partir do arquivo cifrado (`
 ├── solve_fast.py                # Orquestrador multiprocessado paralelizável
 └── README.md                    # Documentação do repositório
 ```
-
 ---
+Obs.: Os Arquivos restantes foram mantidos para registro de desenvolvimento.
 
 ## Requisitos e Pré-requisitos
 
